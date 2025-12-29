@@ -55,7 +55,7 @@ The agent queries a **Xano Backend** to check the user's live account status:
 ---
 
 ## ⚙️ Setup & Installation
-1. **Dify:** Upload the `.txt` files to the Knowledge section. [cite_start]Set RAG priority for Troubleshooting[cite: 34].
+1. **Dify:** Upload the `.txt` files to the Knowledge section. Set RAG priority for Troubleshooting.
 2. **Xano:** Import the schema and configure the API endpoint in Dify's "Tools".
 3. **App Integration:** The interface is built using **DYAD** components.
 
