@@ -13,7 +13,7 @@ The bot is deployed as a persistent side-panel assistant within a high-fidelity 
 * **Orchestration:** [Dify.ai](https://dify.ai/)
 * **Backend & API:** [Xano](https://www.xano.com/)
 * **UI/UX:** Built with **DYAD** for a seamless, modern streaming interface.
-* [cite_start]**Knowledge Base:** Multi-document RAG system utilizing proprietary app guides[cite: 1, 20, 34].
+* **Knowledge Base:** Multi-document RAG system utilizing proprietary app guides.
 
 ---
 
@@ -21,15 +21,34 @@ The bot is deployed as a persistent side-panel assistant within a high-fidelity 
 
 ### 1. Intelligent Knowledge Retrieval (RAG)
 The agent leverages specialized documentation to resolve user queries:
-* [cite_start]**Offline Listening:** Explains the 10,000-song limit per device [cite: 4] [cite_start]and the "30-Day Rule" requiring users to go online once every month to keep downloads[cite: 5, 6].
-* [cite_start]**Audio Quality:** Guides users through setting levels from "Low" (24kbit/s) [cite: 11] [cite_start]to "Very High" (320kbit/s for Premium)[cite: 12, 13].
-* [cite_start]**New Features:** Supports users with the AI DJ [cite: 20][cite_start], Smart Shuffle [cite: 24][cite_start], and Jam real-time listening sessions[cite: 28, 29].
-* [cite_start]**Technical Troubleshooting:** Provides step-by-step guides for "Clean Reinstalls" on Android and iOS to clear corrupted cache[cite: 45, 46, 47].
+* **Offline Listening:** Explains the 10,000-song limit per device and the "30-Day Rule" requiring users to go online once every month.
+* **Audio Quality:** Guides users through setting levels from "Low" (24kbit/s) to "Very High" (320kbit/s for Premium).
+* **New Features:** Supports users with the AI DJ, Smart Shuffle, and Jam real-time listening sessions.
+* **Technical Troubleshooting:** Provides step-by-step guides for "Clean Reinstalls" on Android and iOS.
 
 ### 2. Personalized API Workflows (Xano)
 The agent queries a **Xano Backend** to check the user's live account status:
 * **Status Verification:** Checks if a user is `active`, `payment_failed`, or `suspended`.
 * **Dynamic Logic:** If the Xano flow detects a `payment_failed` status, it triggers a recommendation variable to guide the user toward billing support.
+
+---
+
+## 🧪 Try It Out: Test Scenarios
+
+To see the agent's integration with Xano and the Knowledge Base in action, you can use the following examples in the [Live Demo](https://energetic-ocelot-trot.vercel.app/):
+
+### 1. Account Status Check (API Integration)
+The agent can detect specific account issues by querying the Xano database.
+* **Try this:** *"I'm having trouble with my account, can you check user2@test.com?"*
+* **Expected Result:** The bot will identify that the subscription status is `payment_failed` due to a `card_declined` error and will recommend contacting customer support.
+
+### 2. Technical Troubleshooting (RAG)
+* **Try this:** *"How do I perform a clean reinstall on Android?"*
+* **Expected Result:** The bot will provide the exact steps: Phone Settings > Apps > Spotify > Storage > Clear Data & Cache.
+
+### 3. Feature Guidance
+* **Try this:** *"What is the 30-day rule for downloads?"*
+* **Expected Result:** It will clarify that you must go online at least once every 30 days to keep your downloads active.
 
 ---
 
@@ -39,8 +58,8 @@ The agent queries a **Xano Backend** to check the user's live account status:
 1. **Input:** Agent sends user `email` to the Xano endpoint.
 2. **Get Record:** Xano retrieves the specific row for that user.
 3. **Conditional Check:** * If `subscription_status == payment_failed`, the flow updates the `recommendation` variable to "Contact customer support".
-   * [cite_start]If user data is `null`, an error is thrown to prompt a login verification[cite: 35, 38].
-4. **Response:** Returns structured JSON to Dify.
+   * If user data is `null`, an error is thrown to prompt a login verification.
+4. **Response:** Returns structured JSON to Dify to inform the agent's response.
 
 ---
 
@@ -55,9 +74,9 @@ The agent queries a **Xano Backend** to check the user's live account status:
 ---
 
 ## ⚙️ Setup & Installation
-1. **Dify:** Upload the `.txt` files to the Knowledge section. Set RAG priority for Troubleshooting.
+1. **Dify:** Upload the documentation `.txt` files to the Knowledge section. Set RAG priority for Troubleshooting.
 2. **Xano:** Import the schema and configure the API endpoint in Dify's "Tools".
-3. **App Integration:** The interface is built using **DYAD** components.
+3. **App Integration:** The interface is built using **DYAD** components and hosted on Vercel.
 
 ---
 
