@@ -47,10 +47,10 @@ The agent queries a **Xano Backend** to check the user's live account status:
 ## 📸 Project Gallery
 
 ### I. The Database (Xano)
-![Xano Database](./screenshots/xano_database.png)
+![Xano Database](./RhythmRelief-AI/xano database.png)
 
 ### II. API Logic Stack
-![Xano Flow](./screenshots/xano_flow.png)
+![Xano Flow](./RhythmRelief-AI/xano של flow.png)
 
 ---
 
